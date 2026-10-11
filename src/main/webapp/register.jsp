@@ -132,6 +132,9 @@
         </div>
     </div>
 
+    <!-- Reusable Enterprise Footer -->
+    <jsp:include page="/includes/footer.jsp" />
+
     <script>
         function checkPasswordStrength(val) {
             var bar = document.getElementById('passwordStrengthBar');

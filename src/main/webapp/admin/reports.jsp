@@ -330,11 +330,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>Cybersecurity Incident Reporting &amp; Management System (CIRMS) &bull; Compliance &amp; Forensic Auditing</p>
-        </div>
-    </footer>
+    <jsp:include page="/includes/footer.jsp" />
 
     <script src="<%= request.getContextPath() %>/js/script.js"></script>
     <script>

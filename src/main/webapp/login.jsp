@@ -111,6 +111,9 @@
         </div>
     </div>
 
+    <!-- Reusable Enterprise Footer -->
+    <jsp:include page="/includes/footer.jsp" />
+
     <script>
         function togglePassVisibility(inputId, btn) {
             var field = document.getElementById(inputId);

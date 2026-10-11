@@ -179,11 +179,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>Cybersecurity Incident Reporting &amp; Management System (CIRMS)</p>
-        </div>
-    </footer>
+    <jsp:include page="/includes/footer.jsp" />
 
 </body>
 </html>

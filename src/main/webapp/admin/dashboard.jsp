@@ -289,11 +289,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>Cybersecurity Incident Reporting &amp; Management System (CIRMS) &bull; Executive Command Center</p>
-        </div>
-    </footer>
+    <jsp:include page="/includes/footer.jsp" />
 
     <script src="<%= request.getContextPath() %>/js/script.js"></script>
 </body>

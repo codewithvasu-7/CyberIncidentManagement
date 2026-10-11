@@ -312,11 +312,7 @@
         <% } %>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>Cybersecurity Incident Reporting &amp; Management System (CIRMS) &bull; Threat Intelligence &amp; URL Scanner</p>
-        </div>
-    </footer>
+    <jsp:include page="/includes/footer.jsp" />
 
     <script>
         function switchScannerTab(tab) {

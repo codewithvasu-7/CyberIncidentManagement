@@ -245,12 +245,8 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>Cybersecurity Incident Reporting &amp; Management System (CIRMS) &bull; Major Project MVC Implementation</p>
-        </div>
-    </footer>
+    <!-- Reusable Enterprise Footer -->
+    <jsp:include page="/includes/footer.jsp" />
 
 </body>
 </html>
