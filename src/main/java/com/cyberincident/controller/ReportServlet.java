@@ -6,6 +6,7 @@ import com.cyberincident.dao.IncidentDAO;
 import com.cyberincident.model.AuditLog;
 import com.cyberincident.model.Incident;
 import com.cyberincident.model.User;
+import com.cyberincident.security.ClientInfoUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -105,12 +106,12 @@ public class ReportServlet extends HttpServlet {
         List<AuditLog> list = auditDAO.getRecentLogs(500);
         PrintWriter out = response.getWriter();
 
-        out.println("Log ID,Timestamp,Username,Action,Entity Type,Entity ID,IP Address,Device,Details");
+        out.println("Log ID,Timestamp (IST - India),Username,Action,Entity Type,Entity ID,IP Address,Device,Details");
 
         for (AuditLog log : list) {
             out.printf("%d,\"%s\",\"%s\",\"%s\",\"%s\",%s,\"%s\",\"%s\",\"%s\"%n",
                     log.getId(),
-                    log.getTimestamp() != null ? log.getTimestamp().toString() : "",
+                    log.getTimestamp() != null ? ClientInfoUtil.formatIndiaTimestamp(log.getTimestamp()) : "",
                     escapeCsv(log.getUsername()),
                     escapeCsv(log.getAction()),
                     escapeCsv(log.getEntityType()),
