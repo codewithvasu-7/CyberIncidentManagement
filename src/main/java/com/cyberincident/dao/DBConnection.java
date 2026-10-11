@@ -45,6 +45,17 @@ public class DBConnection {
         if (System.getProperty("db.url") != null) dbUrl = System.getProperty("db.url");
         if (System.getProperty("db.user") != null) dbUser = System.getProperty("db.user");
         if (System.getProperty("db.password") != null) dbPassword = System.getProperty("db.password");
+
+        // Allow Cloud OS Environment Variables (Render, Docker, Railway, AWS)
+        if (System.getenv("DB_URL") != null && !System.getenv("DB_URL").trim().isEmpty()) {
+            dbUrl = System.getenv("DB_URL").trim();
+        }
+        if (System.getenv("DB_USER") != null && !System.getenv("DB_USER").trim().isEmpty()) {
+            dbUser = System.getenv("DB_USER").trim();
+        }
+        if (System.getenv("DB_PASSWORD") != null) {
+            dbPassword = System.getenv("DB_PASSWORD").trim();
+        }
     }
 
     /**
