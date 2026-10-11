@@ -9,7 +9,7 @@
     <packaging>war</packaging>
 
     <name>Cybersecurity Incident Reporting and Management System</name>
-    <description>Enterprise SOC & Incident Response Web Application (MVC, Servlets, JSP, JDBC, MySQL)</description>
+    <description>Enterprise SOC &amp; Incident Response Web Application (MVC, Servlets, JSP, JDBC, MySQL)</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
