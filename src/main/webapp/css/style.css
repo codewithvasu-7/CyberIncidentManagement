@@ -1,0 +1,924 @@
+/* ====================================================================
+   Cybersecurity Incident Reporting & Management System (CIRMS)
+   MASTERCLASS HUMAN-CRAFTED NEUMORPHIC DESIGN SYSTEM
+   Authentic Physical Lighting Model (135° Directional Bevels & Depth)
+   Canvas: Soft Executive Titanium Slate (#e8edf5)
+   Primary Text: Deep Obsidian Charcoal (#0f172a) - 100% Crisp Contrast
+   ==================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Base Neumorphic Canvas & Surfaces */
+    --neu-base: #e8edf5;
+    --neu-surface: #e8edf5;
+    --neu-surface-hover: #edf2fa;
+    --neu-surface-active: #e2e8f1;
+    
+    /* Mathematical Directional Light & Shadow Physics (135deg Light Source) */
+    --neu-light: #ffffff;
+    --neu-dark: #b8c4d6;
+    --neu-dark-deep: #a4b2c7;
+    
+    /* Extruded Surfaces (Gentle Human Bevels) */
+    --neu-flat: 7px 7px 16px var(--neu-dark), -7px -7px 16px var(--neu-light);
+    --neu-raised-sm: 4px 4px 10px var(--neu-dark), -4px -4px 10px var(--neu-light);
+    --neu-raised: 8px 8px 18px var(--neu-dark), -8px -8px 18px var(--neu-light);
+    --neu-raised-lg: 12px 12px 26px var(--neu-dark), -12px -12px 26px var(--neu-light);
+    
+    /* Sunken / Debossed Surfaces (Pressed Wells for Inputs & Active States) */
+    --neu-sunken: inset 4px 4px 8px var(--neu-dark), inset -4px -4px 8px var(--neu-light);
+    --neu-sunken-sm: inset 2px 2px 5px var(--neu-dark), inset -2px -2px 5px var(--neu-light);
+    --neu-sunken-deep: inset 5px 5px 12px var(--neu-dark-deep), inset -5px -5px 12px var(--neu-light);
+    
+    /* Tactile Borders & Bevels */
+    --neu-border: 1px solid rgba(255, 255, 255, 0.85);
+    --neu-border-subtle: 1px solid rgba(184, 196, 214, 0.45);
+    --border-color: rgba(184, 196, 214, 0.6);
+    
+    /* Human Typography (High-Contrast, WCAG AAA Compliant) */
+    --text-primary: #0f172a;       /* Deep obsidian black */
+    --text-secondary: #334155;     /* Dark slate */
+    --text-muted: #64748b;         /* Cool graphite */
+    --text-subtle: #94a3b8;
+    --text-main: #0f172a;
+    --text-dark: #64748b;
+    
+    /* Functional Security Accents */
+    --cobalt-primary: #1d4ed8;     /* Rich Executive Cobalt */
+    --cobalt-hover: #1e40af;
+    --cyan-accent: #0284c7;        /* Crisp Deep Sky Cyan */
+    --cyan-glow: #0284c7;
+    --emerald-safe: #059669;       /* Verified Safe Green */
+    --amber-warning: #d97706;      /* Warning Amber */
+    --rose-threat: #dc2626;        /* Threat Crimson */
+    --purple-tactile: #7c3aed;
+    
+    /* Physical Geometry */
+    --radius-pill: 9999px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', Consolas, "Courier New", monospace;
+
+    /* Spatial Fallback Aliases to Neumorphism */
+    --spatial-bg: var(--neu-base);
+    --glass-card: var(--neu-base);
+    --glass-input: var(--neu-base);
+    --glass-border: rgba(255, 255, 255, 0.85);
+    --spatial-shadow-sm: var(--neu-raised-sm);
+    --spatial-shadow-md: var(--neu-flat);
+    --spatial-shadow-lg: var(--neu-raised-lg);
+    --glass-specular: none;
+    --glass-specular-hover: none;
+}
+
+/* ====================================================================
+   BASE RESET & CANVAS
+   ==================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--neu-base);
+    color-scheme: light;
+}
+
+body {
+    background-color: var(--neu-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Subtle Tactile Lighting Overlay */
+.spatial-grid-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.7) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(184, 196, 214, 0.3) 0%, transparent 45%);
+}
+
+a {
+    color: var(--cobalt-primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+a:hover {
+    color: var(--cobalt-hover);
+}
+
+.container {
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ====================================================================
+   NEUMORPHIC FLOATING CAPSULE NAVBAR
+   ==================================================================== */
+
+.navbar {
+    position: sticky;
+    top: 14px;
+    z-index: 1000;
+    margin: 0 20px 14px 20px;
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    background: var(--neu-base);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--neu-flat);
+    border: var(--neu-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.18rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--neu-base);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--neu-raised-sm);
+    border: var(--neu-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    color: var(--cobalt-primary);
+    transition: transform 0.2s ease;
+}
+
+.brand:hover .brand-icon {
+    transform: scale(1.06);
+}
+
+.brand-badge {
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken-sm);
+    color: var(--cobalt-primary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    background: var(--neu-base);
+    padding: 5px 8px;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--neu-sunken-sm);
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.nav-links a.active {
+    color: var(--cobalt-primary);
+    background: var(--neu-base);
+    box-shadow: var(--neu-raised-sm);
+    font-weight: 700;
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.role-badge {
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken-sm);
+    border: var(--neu-border);
+}
+.role-badge.admin {
+    color: #dc2626;
+    border-color: rgba(220, 38, 38, 0.25);
+}
+.role-badge.analyst {
+    color: var(--cobalt-primary);
+    border-color: rgba(29, 78, 216, 0.25);
+}
+.role-badge.user {
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.25);
+}
+
+/* ====================================================================
+   TACTILE MECHANICAL BUTTONS
+   ==================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: var(--radius-pill);
+    font-size: 0.90rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+    text-decoration: none;
+    position: relative;
+    user-select: none;
+}
+
+.btn:active {
+    transform: translateY(2px) scale(0.98);
+}
+
+/* Primary Mechanical Button */
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff !important;
+    box-shadow: 4px 4px 12px rgba(29, 78, 216, 0.35), -2px -2px 8px rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    box-shadow: 6px 6px 18px rgba(29, 78, 216, 0.45), -3px -3px 10px rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+}
+.btn-primary:active {
+    box-shadow: inset 2px 2px 6px rgba(15, 23, 42, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.2);
+}
+
+/* Secondary Neumorphic Extruded Button */
+.btn-secondary {
+    background: var(--neu-base);
+    color: var(--text-primary);
+    box-shadow: var(--neu-raised-sm);
+    border: var(--neu-border);
+}
+.btn-secondary:hover {
+    box-shadow: var(--neu-raised);
+    color: var(--cobalt-primary);
+    transform: translateY(-1px);
+}
+.btn-secondary:active {
+    box-shadow: var(--neu-sunken);
+    transform: translateY(1px);
+}
+
+/* Danger Button */
+.btn-danger {
+    background: var(--neu-base);
+    color: #dc2626;
+    box-shadow: var(--neu-raised-sm);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    font-weight: 600;
+}
+.btn-danger:hover {
+    background: #dc2626;
+    color: #ffffff;
+    box-shadow: 4px 4px 14px rgba(220, 38, 38, 0.35);
+}
+.btn-danger:active {
+    box-shadow: inset 2px 2px 6px rgba(15, 23, 42, 0.4);
+}
+
+/* Success Button */
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff !important;
+    box-shadow: 4px 4px 12px rgba(5, 150, 105, 0.35);
+}
+.btn-success:hover {
+    background: #059669;
+    box-shadow: 6px 6px 16px rgba(5, 150, 105, 0.45);
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 0.82rem;
+}
+
+/* ====================================================================
+   EXTRUDED NEUMORPHIC CARDS & PANELS
+   ==================================================================== */
+
+.card {
+    background: var(--neu-base);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--neu-flat);
+    border: var(--neu-border);
+    position: relative;
+    margin-bottom: 24px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--neu-raised);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: var(--neu-border-subtle);
+}
+
+.card-title {
+    font-size: 1.24rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.02em;
+}
+
+/* ====================================================================
+   NEUMORPHIC KPI TELEMETRY GRID
+   ==================================================================== */
+
+.grid-kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.kpi-card {
+    background: var(--neu-base);
+    border-radius: var(--radius-lg);
+    padding: 24px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--neu-flat);
+    border: var(--neu-border);
+    transition: all 0.25s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--neu-raised);
+}
+
+.kpi-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+}
+
+.kpi-value {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.kpi-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--radius-md);
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken);
+    border: var(--neu-border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* ====================================================================
+   TACTILE DEFCON ALERT BANNER
+   ==================================================================== */
+
+.defcon-banner {
+    background: var(--neu-base);
+    border-radius: var(--radius-lg);
+    padding: 18px 26px;
+    margin-bottom: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--neu-flat);
+    border: var(--neu-border);
+    border-left: 6px solid #dc2626;
+    position: relative;
+}
+
+.defcon-pulse {
+    width: 14px;
+    height: 14px;
+    background-color: #dc2626;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+    animation: neuPulse 1.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes neuPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+    70% { transform: scale(1.15); box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+/* Status Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken-sm);
+    border: var(--neu-border);
+}
+
+.badge-critical {
+    color: #dc2626;
+    border-color: rgba(220, 38, 38, 0.4);
+}
+.badge-high {
+    color: #ea580c;
+    border-color: rgba(234, 88, 12, 0.4);
+}
+.badge-medium {
+    color: #d97706;
+    border-color: rgba(217, 119, 6, 0.4);
+}
+.badge-low {
+    color: #0284c7;
+    border-color: rgba(2, 132, 199, 0.4);
+}
+.badge-resolved {
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.4);
+}
+.badge-review {
+    color: #7c3aed;
+    border-color: rgba(124, 58, 237, 0.4);
+}
+
+/* ====================================================================
+   NEUMORPHIC FORMS & DEBOSSED INPUT WELLS
+   ==================================================================== */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 18px;
+    background: var(--neu-base);
+    border: var(--neu-border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    outline: none;
+    box-shadow: var(--neu-sunken);
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    box-shadow: var(--neu-sunken-deep);
+    border-color: var(--cobalt-primary);
+}
+
+select.form-control {
+    cursor: pointer;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ====================================================================
+   CLEAN NEUMORPHIC DATA TABLES
+   ==================================================================== */
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken-sm);
+    border: var(--neu-border);
+    padding: 6px;
+}
+
+.cyber-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    text-align: left;
+}
+
+.cyber-table th {
+    padding: 14px 18px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-secondary);
+    border-bottom: var(--neu-border-subtle);
+}
+
+.cyber-table td {
+    padding: 14px 18px;
+    font-size: 0.90rem;
+    color: var(--text-primary);
+    background: var(--neu-base);
+    transition: all 0.15s ease;
+}
+
+.cyber-table tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.incident-code {
+    font-family: var(--font-mono);
+    color: var(--cobalt-primary);
+    font-weight: 700;
+    background: var(--neu-base);
+    box-shadow: var(--neu-raised-sm);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    border: var(--neu-border);
+}
+
+/* ====================================================================
+   AUTHENTICATION PORTAL (SOC Access Gateway)
+   ==================================================================== */
+
+.auth-wrapper {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 480px;
+    background: var(--neu-base);
+    border-radius: var(--radius-xl);
+    padding: 40px 36px;
+    box-shadow: var(--neu-raised-lg);
+    border: var(--neu-border);
+    position: relative;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 26px;
+}
+
+.auth-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 16px auto;
+    background: var(--neu-base);
+    border-radius: 20px;
+    box-shadow: var(--neu-flat);
+    border: var(--neu-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--cobalt-primary);
+}
+
+.auth-title {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+}
+
+.demo-roles {
+    margin-top: 24px;
+    padding: 16px;
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken-sm);
+    border-radius: var(--radius-md);
+    border: var(--neu-border-subtle);
+    text-align: center;
+}
+
+.demo-pills {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.demo-pill {
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--neu-base);
+    box-shadow: var(--neu-raised-sm);
+    border: var(--neu-border);
+    color: var(--text-primary);
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.demo-pill:hover {
+    box-shadow: var(--neu-raised);
+    color: var(--cobalt-primary);
+    transform: translateY(-1px);
+}
+.demo-pill:active {
+    box-shadow: var(--neu-sunken);
+    transform: translateY(1px);
+}
+
+/* Alerts */
+.alert {
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken-sm);
+    border: var(--neu-border);
+}
+
+.alert-danger {
+    color: #dc2626;
+    border-color: rgba(220, 38, 38, 0.3);
+}
+
+.alert-success {
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.3);
+}
+
+.alert-info {
+    color: var(--cobalt-primary);
+    border-color: rgba(29, 78, 216, 0.3);
+}
+
+/* ====================================================================
+   SCANNER & THREAT DETECTION (URL & QR Scanner)
+   ==================================================================== */
+
+.scanner-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.scanner-tabs {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 28px;
+    justify-content: center;
+}
+
+.tab-btn {
+    background: var(--neu-base);
+    box-shadow: var(--neu-raised-sm);
+    border: var(--neu-border);
+    border-radius: var(--radius-pill);
+    padding: 12px 30px;
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    box-shadow: var(--neu-raised);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+.tab-btn.active {
+    box-shadow: var(--neu-sunken);
+    color: var(--cobalt-primary);
+    border-color: rgba(29, 78, 216, 0.3);
+    font-weight: 800;
+}
+
+.qr-dropzone {
+    border: 2px dashed rgba(29, 78, 216, 0.4);
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken);
+    border-radius: var(--radius-lg);
+    padding: 44px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qr-dropzone:hover {
+    border-color: var(--cobalt-primary);
+    box-shadow: var(--neu-sunken-deep);
+}
+
+.sample-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.sample-chip {
+    background: var(--neu-base);
+    border: var(--neu-border);
+    border-radius: var(--radius-pill);
+    padding: 7px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    box-shadow: var(--neu-raised-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.sample-chip:hover {
+    box-shadow: var(--neu-raised);
+    color: var(--cobalt-primary);
+    transform: translateY(-1px);
+}
+.sample-chip:active {
+    box-shadow: var(--neu-sunken-sm);
+    transform: translateY(1px);
+}
+
+.threat-gauge-box {
+    text-align: center;
+    padding: 26px;
+    border-radius: var(--radius-lg);
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken);
+    border: var(--neu-border);
+    margin-bottom: 24px;
+}
+
+.threat-factor-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--neu-base);
+    border-radius: var(--radius-md);
+    margin-bottom: 10px;
+    font-size: 0.92rem;
+    box-shadow: var(--neu-raised-sm);
+    border: var(--neu-border);
+}
+
+.threat-factor-item.danger {
+    border-left: 5px solid #dc2626;
+    color: #991b1b;
+}
+
+.threat-factor-item.safe {
+    border-left: 5px solid #059669;
+    color: #065f46;
+}
+
+/* IOC Snippet Box */
+.ioc-box {
+    background: var(--neu-base);
+    box-shadow: var(--neu-sunken);
+    border: var(--neu-border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--cobalt-primary);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background: var(--neu-base);
+    box-shadow: 0 -4px 14px var(--neu-dark);
+    padding: 24px 0;
+    text-align: center;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 10;
+}
+
+.user-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        margin: 0;
+        top: 0;
+    }
+    .nav-container {
+        border-radius: 0;
+    }
+    .nav-links {
+        display: none;
+    }
+    .grid-kpi {
+        grid-template-columns: 1fr;
+    }
+}
