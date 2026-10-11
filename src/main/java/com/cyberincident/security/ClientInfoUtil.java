@@ -4,6 +4,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -15,7 +17,12 @@ import java.util.TimeZone;
 public class ClientInfoUtil {
 
     // Indian Standard Time Zone (UTC+5:30)
-    public static final TimeZone IST_ZONE = TimeZone.getTimeZone("Asia/Kolkata");
+    public static final ZoneId IST_ZONE_ID = ZoneId.of("Asia/Kolkata");
+    public static final TimeZone IST_ZONE = TimeZone.getTimeZone(IST_ZONE_ID);
+    private static final DateTimeFormatter IST_DTF =
+            DateTimeFormatter.ofPattern("dd MMM yyyy, hh:mm:ss a", Locale.ENGLISH);
+    private static final DateTimeFormatter IST_SHORT_DTF =
+            DateTimeFormatter.ofPattern("dd MMM, hh:mm a", Locale.ENGLISH);
 
     private static final String[] IP_HEADERS = {
             "CF-Connecting-IP",      // Real client IP from Cloudflare Tunnel
@@ -236,11 +243,15 @@ public class ClientInfoUtil {
     public static String formatIndiaTimestamp(Timestamp ts) {
         if (ts == null) return "N/A";
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy, hh:mm:ss a", Locale.ENGLISH);
-            sdf.setTimeZone(IST_ZONE);
-            return sdf.format(ts) + " IST";
+            return ts.toInstant().atZone(IST_ZONE_ID).format(IST_DTF) + " IST";
         } catch (Exception e) {
-            return ts.toString();
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy, hh:mm:ss a", Locale.ENGLISH);
+                sdf.setTimeZone(IST_ZONE);
+                return sdf.format(ts) + " IST";
+            } catch (Exception ex) {
+                return ts.toString();
+            }
         }
     }
 
@@ -257,11 +268,15 @@ public class ClientInfoUtil {
     public static String formatShortTimestamp(Timestamp ts) {
         if (ts == null) return "N/A";
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, hh:mm a", Locale.ENGLISH);
-            sdf.setTimeZone(IST_ZONE);
-            return sdf.format(ts) + " IST";
+            return ts.toInstant().atZone(IST_ZONE_ID).format(IST_SHORT_DTF) + " IST";
         } catch (Exception e) {
-            return ts.toString();
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, hh:mm a", Locale.ENGLISH);
+                sdf.setTimeZone(IST_ZONE);
+                return sdf.format(ts) + " IST";
+            } catch (Exception ex) {
+                return ts.toString();
+            }
         }
     }
 

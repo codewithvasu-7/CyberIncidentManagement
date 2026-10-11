@@ -56,6 +56,19 @@ public class DBConnection {
         if (System.getenv("DB_PASSWORD") != null) {
             dbPassword = System.getenv("DB_PASSWORD").trim();
         }
+
+        // Automatic Timezone Normalization for Cloud DBs (Aiven, Render, AWS, Railway)
+        // Cloud MySQL servers (Aiven) store timestamps in UTC.
+        // If serverTimezone is passed as Asia/Kolkata, MySQL Connector/J shifts
+        // UTC timestamps by -5:30. Setting serverTimezone=UTC ensures
+        // the JDBC driver correctly interprets UTC, enabling 100% accurate India Standard Time (IST) formatting.
+        if (dbUrl != null && !dbUrl.contains("localhost") && !dbUrl.contains("127.0.0.1")) {
+            if (dbUrl.contains("serverTimezone=Asia/Kolkata")) {
+                dbUrl = dbUrl.replace("serverTimezone=Asia/Kolkata", "serverTimezone=UTC");
+            } else if (!dbUrl.contains("serverTimezone=")) {
+                dbUrl += (dbUrl.contains("?") ? "&" : "?") + "serverTimezone=UTC";
+            }
+        }
     }
 
     /**

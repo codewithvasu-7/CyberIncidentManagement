@@ -279,7 +279,7 @@
                                         <%= ClientInfoUtil.formatIndiaTimestamp(log.getTimestamp()) %>
                                     </div>
                                     <div class="audit-time-sub">
-                                        🇮🇳 IST &bull; <%= log.getTimestamp() != null ? log.getTimestamp().toString().substring(0, 19) : "" %> (UTC)
+                                        Server UTC: <%= log.getTimestamp() != null ? log.getTimestamp().toString().substring(0, 19) : "" %>
                                     </div>
                                 </td>
                                 <td>
