@@ -62,7 +62,7 @@ public class AuditLogDAO {
      */
     public List<AuditLog> getRecentLogs(int limit) {
         List<AuditLog> list = new ArrayList<>();
-        String sql = "SELECT * FROM audit_logs ORDER BY timestamp DESC LIMIT ?";
+        String sql = "SELECT * FROM audit_logs ORDER BY id DESC LIMIT ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, limit <= 0 ? 50 : limit);
@@ -96,7 +96,7 @@ public class AuditLogDAO {
      */
     public List<AuditLog> getLogsByEntity(String entityType, int entityId) {
         List<AuditLog> list = new ArrayList<>();
-        String sql = "SELECT * FROM audit_logs WHERE entity_type = ? AND entity_id = ? ORDER BY timestamp DESC";
+        String sql = "SELECT * FROM audit_logs WHERE entity_type = ? AND entity_id = ? ORDER BY id DESC";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, entityType);
