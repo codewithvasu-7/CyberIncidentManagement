@@ -94,10 +94,12 @@ The project work is organized chronologically below. Each week has a dedicated s
                                                   reusable UI components
                                                   and navigation
 
+  
   Shilpi                  `ShilpiJha2210`         Dashboard metrics,
                                                   audit logs, MTTR
                                                   calculations and report
                                                   generation
+
   -----------------------------------------------------------------------
 
 This table describes the planned/recorded module distribution. Git
