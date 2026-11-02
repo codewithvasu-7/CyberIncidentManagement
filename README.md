@@ -25,9 +25,10 @@ procedures.
 > https://github.com/codewithvasu-7/CyberIncidentManagement\
 > **Recorded live deployment:**
 > https://cyberincidentmanagement-1.onrender.com\
+> **Project Documentation:**
+> https://drive.google.com/drive/folders/1-pyemcvWOqawYzCO7j0DMQzxY2gWMtmL
 > **Project duration:** 12-week development plan\
-> **Project guide:** Add/confirm the guide's name before final academic
-> submission.
+> **Project guide:** Er. Ram Babu Buri
 
 ------------------------------------------------------------------------
 
